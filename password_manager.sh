@@ -1,12 +1,13 @@
 #!/bin/bash
 
 echo 'パスワードマネージャーへようこそ!'
-echo 'サービス名を入力してください:'
+echo -n 'サービス名を入力してください:'
 read service
-echo 'ユーザー名を入力してください:'
+echo -n 'ユーザー名を入力してください:'
 read user
-echo 'パスワードを入力してください:'
-read password
+echo -n 'パスワードを入力してください:'
+read -s password
+echo
 
 echo "サービス名：$service" >> passwords.sh
 echo "ユーザー名：$user" >> passwords.sh
