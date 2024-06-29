@@ -17,6 +17,17 @@ AddPassword()
     echo "パスワード：$password" >> passwords.sh
 }
 
+GetPassword()
+{
+    echo -n 'サービス名を入力してください:'
+    read service
+    grep -A 2 "$service" passwords.sh
+    if [ $? -eq 1 ]; then
+        echo 'そのサービス名は登録されていません'
+    fi
+    echo
+}
+
 choices=''
 while [ "$choices" != 'Exit' ]
 do
@@ -25,6 +36,8 @@ do
     read choices
 if [ "$choices" == 'Add Password' ];then
     AddPassword
+elif [ "$choices" == 'Get Password' ];then
+    GetPassword
 else
     break
 fi
